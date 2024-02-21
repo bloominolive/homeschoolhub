@@ -16,7 +16,6 @@ export default async function TodoList(){
         .from('todo')
         .select('*')
         .eq('user_id', user.id)
-        .order('date', {ascending: true})
     if (error){
         console.error('Error fetching todos')
     }
