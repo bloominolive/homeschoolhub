@@ -18,6 +18,7 @@ export default async function Home(){
     .from('todo')
     .select('*')
     .eq('user_id', user.id)
+    .limit('3')
 
     if (error){
         console.error('Error fetching todos')
@@ -36,12 +37,14 @@ export default async function Home(){
                                 todo.map((todo) => (
                                     <div key={todo.id} className="mb-4 mt-8 p-4 bg-gray-800 rounded-lg shadow w-96">
                                         <h2 className="text-xl text-white mb-2">{todo.description}</h2>
+                                        <h2 className="text-xl text-white mb-2">{todo.is_complete ? "Completed!" : "Incomplete"}</h2>
                                         <div className="flex space-x-2">
                                             <form action={completeTodo}>
                                                 <input type="hidden" name="id" value={todo.id} />
                                                 <button 
+                                                    disabled={todo.is_complete}
                                                     type="submit"
-                                                    className="bg-green-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                                                    className="bg-green-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded disabled:bg-gray-700"
                                                 >
                                                     Complete
                                                 </button>

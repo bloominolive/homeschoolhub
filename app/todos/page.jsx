@@ -29,7 +29,7 @@ export default async function TodoList(){
                     {todos && todos.length > 0 ? todos.map((todo) => (
                         <div key={todo.id} className="mb-4 mt-8 p-4 bg-gray-800 rounded-lg shadow w-96">
                             <h2 className="text-xl text-white mb-2">{todo.description}</h2>
-                            <h2 className="text-xl text-white mb-2">{todo.is_complete ? "Complete" : "Incomplete"}</h2>
+                            <h2 className="text-xl text-white mb-2">{todo.is_complete ? "Completed!" : "Incomplete"}</h2>
                             <div className="flex space-x-2">
                             <form action={completeTodo}>
                                 <input type="hidden" name="id" value={todo.id} />
